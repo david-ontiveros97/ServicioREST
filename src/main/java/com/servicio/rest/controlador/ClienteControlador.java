@@ -21,7 +21,7 @@ public class ClienteControlador {
 
 	@GetMapping("/clientes")
 	public List<Clientes> listarClientes(){
-		
+		LOG.info("Prueba log");
 		return servicio.listaClientes();
 		
 	}
