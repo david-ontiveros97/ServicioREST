@@ -1,11 +1,17 @@
 package com.servicio.rest.modelo;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Clientes")
@@ -20,6 +26,12 @@ public class Clientes {
 	private String nombre;
 	@Column(name = "Apellido")
 	private String apellido;
+
+	@OneToMany(mappedBy = "clientes", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Ventas> ventas;
+
+	
 
 	public Clientes(Integer id, String nombre, String apellido) {
 		super();
@@ -48,7 +60,7 @@ public class Clientes {
 
 	@Override
 	public String toString() {
-		return "Clientes [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + "]";
+		return "Clientes [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", ventas=" + ventas + "]";
 	}
 
 	public String getNombre() {
@@ -65,5 +77,12 @@ public class Clientes {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	}
+	public List<Ventas> getVentas() {
+		return ventas;
+	}
+
+	public void setVentas(List<Ventas> ventas) {
+		this.ventas = ventas;
 	}
 }
