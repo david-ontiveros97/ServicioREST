@@ -12,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "Ventas")
 public class Ventas {
@@ -28,10 +32,12 @@ public class Ventas {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_producto")
+	@JsonBackReference
 	private Productos productos;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_cliente")
+	@JsonBackReference
 	private Clientes clientes;
 
 	public Ventas() {
@@ -105,9 +111,10 @@ public class Ventas {
 
 	@Override
 	public String toString() {
-		return "Ventas [id=" + id + ", fecha=" + fecha + ", cantidad=" + cantidad + ", productos=" + productos
-				+ ", clientes=" + clientes + "]";
+		return "Ventas [id=" + id + ", fecha=" + fecha + ", cantidad=" + cantidad + "]";
 	}
+
+	
 
 	
 

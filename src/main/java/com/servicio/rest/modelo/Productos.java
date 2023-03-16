@@ -11,8 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table (name = "Productos")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Productos {
 
 	@Id
@@ -27,6 +31,7 @@ public class Productos {
 	
 	
 	@OneToMany(mappedBy = "productos", cascade = CascadeType.ALL)
+	@JsonBackReference
 	private List<Ventas> venta ;
 	
 	public Productos() {

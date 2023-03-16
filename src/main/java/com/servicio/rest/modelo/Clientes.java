@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "Clientes")
@@ -19,16 +21,18 @@ public class Clientes {
 
 	@Id
 	@Column(name = "ID_cliente")
+	@JsonProperty("ID_CLIENTE")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
+	@JsonProperty("Nombre")
 	@Column(name = "Nombre")
 	private String nombre;
 	@Column(name = "Apellido")
+	@JsonProperty("apellido")
 	private String apellido;
 
 	@OneToMany(mappedBy = "clientes", cascade = CascadeType.ALL)
-	@JsonIgnore
+	@JsonBackReference
 	private List<Ventas> ventas;
 
 	
