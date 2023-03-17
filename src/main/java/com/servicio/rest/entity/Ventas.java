@@ -1,4 +1,4 @@
-package com.servicio.rest.modelo;
+package com.servicio.rest.entity;
 
 import java.time.LocalDate;
 

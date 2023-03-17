@@ -1,4 +1,4 @@
-package com.servicio.rest.modelo;
+package com.servicio.rest.entity;
 
 import java.util.List;
 
@@ -11,31 +11,22 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 @Entity
 @Table(name = "Clientes")
 public class Clientes {
 
 	@Id
 	@Column(name = "ID_cliente")
-	@JsonProperty("ID_CLIENTE")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@JsonProperty("Nombre")
+
 	@Column(name = "Nombre")
 	private String nombre;
 	@Column(name = "Apellido")
-	@JsonProperty("apellido")
 	private String apellido;
 
 	@OneToMany(mappedBy = "clientes", cascade = CascadeType.ALL)
-	@JsonBackReference
 	private List<Ventas> ventas;
-
-	
 
 	public Clientes(Integer id, String nombre, String apellido) {
 		super();
@@ -82,6 +73,7 @@ public class Clientes {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+
 	public List<Ventas> getVentas() {
 		return ventas;
 	}

@@ -7,14 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.servicio.rest.modelo.Ventas;
-import com.servicio.rest.servicio.VentasServicio;
+import com.servicio.rest.entity.Ventas;
+import com.servicio.rest.servicio.VentasServicioimpl;
 
 @RestController
 public class VentasControlador {
 
 	@Autowired
-	private VentasServicio ventasServicio;
+	private VentasServicioimpl ventasServicio;
 	
 	@GetMapping("/ventas")
 	public ResponseEntity<List<Ventas>> consultarVentas(){

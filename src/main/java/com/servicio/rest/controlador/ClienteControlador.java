@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.servicio.rest.modelo.Clientes;
+import com.servicio.rest.entity.Clientes;
+import com.servicio.rest.modelo.ClientesModel;
 import com.servicio.rest.servicio.ClienteServicio;
 
 @RestController
@@ -23,8 +24,8 @@ public class ClienteControlador {
 	private static final Log LOG = LogFactory.getLog(ClienteControlador.class);
 
 	@GetMapping("/clientes")
-	public ResponseEntity<List<Clientes>> consultarClientes() {
-		List<Clientes> clientes = servicio.listaClientes();
+	public ResponseEntity<List<ClientesModel>> consultarClientes() {
+		List<ClientesModel> clientes = servicio.listaClientes();
 		return ResponseEntity.ok(clientes);
 
 	}
@@ -34,8 +35,8 @@ public class ClienteControlador {
  * @author david-ontiveros97
  */
 	@GetMapping("/clientes/{id}")
-	public ResponseEntity<Clientes> buscarClientePorId(@PathVariable(value = "id") int clienteId) {
-		Optional<Clientes> cliente = servicio.findById(clienteId);
+	public ResponseEntity<ClientesModel> buscarClientePorId(@PathVariable(value = "id") int clienteId) {
+		Optional<ClientesModel> cliente = servicio.findById(clienteId);
 		if (cliente.isPresent()) {
 			return ResponseEntity.ok().body(cliente.get());
 		} else {
