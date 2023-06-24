@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.servicio.rest.entity.Clientes;
 import com.servicio.rest.modelo.ClientesModel;
 import com.servicio.rest.servicio.ClienteServicio;
 

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.servicio.rest.entity.Clientes;
@@ -14,11 +13,10 @@ import com.servicio.rest.modelo.ClientesModel;
 @Component
 public class ClientesAssamblerimpl implements ClientesAssambler{
 
-	@Autowired
-	ClientesModel model;
+	
 
 	public ClientesModel toModel(Clientes entity) {
-
+		ClientesModel model = new ClientesModel();
 		model.setNombre(entity.getNombre());
 		model.setApellido(entity.getApellido());
 		model.setVentas(entity.getVentas().stream().collect(Collectors.toList()));
@@ -34,6 +32,7 @@ public class ClientesAssamblerimpl implements ClientesAssambler{
 	}
 
 	public Optional<ClientesModel> toModelOptional(Optional<Clientes> entities) {
+		ClientesModel model = new ClientesModel();
 		return entities.map(entity -> {
 			model.setNombre(entity.getNombre());
 			model.setApellido(entity.getApellido());

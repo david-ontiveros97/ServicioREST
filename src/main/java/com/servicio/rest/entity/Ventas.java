@@ -32,12 +32,10 @@ public class Ventas {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_producto")
-	@JsonBackReference
 	private Productos productos;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_cliente")
-	@JsonBackReference
 	private Clientes clientes;
 
 	public Ventas() {

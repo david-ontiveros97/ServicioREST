@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.servicio.rest.entity.Ventas;
 
 @Component
+@JsonIgnoreProperties("ventas")
 public class ClientesModel {
 
 	@JsonProperty("Nombre")
